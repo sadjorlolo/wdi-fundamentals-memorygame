@@ -24,19 +24,35 @@ var checkForMatch = function(){
 }
 
 
-var flipCard = function(cardId) {
+var flipCard = function() {
 
+	var cardId = this.getAttribute('data-id');
 	cardsInPlay.push(cards[cardId].rank);
 	console.log("User flipped " + cards[cardId].rank);
 	console.log(cards[cardId].cardImage);
 	console.log(cards[cardId].suit);
+
+	this.setAttribute('src', cards[cardId].cardImage);
 
 	if(cardsInPlay.length === 2) {
 		checkForMatch();
 	}
 }
 
-flipCard(0);
-flipCard(2);
+var createBoard = function () {
+	for (i = 0; i < cards.length; i++) {
+		var cardElement = document.createElement('img');
+		cardElement.setAttribute('src', 'images/back.png');
+		cardElement.setAttribute('data-id', i);
+		cardElement.addEventListener('click', flipCard);
+		document.getElementById('game-board').appendChild(cardElement);
+
+	}
+}
+
+createBoard();
+
+//document.getElementsByTagName('button')[0].addEventListener('click', window.location.reload());
+
 
 
