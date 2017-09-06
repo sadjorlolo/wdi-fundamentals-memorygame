@@ -39,6 +39,7 @@ var flipCard = function() {
 	}
 }
 
+
 var createBoard = function () {
 	for (i = 0; i < cards.length; i++) {
 		var cardElement = document.createElement('img');
@@ -52,7 +53,14 @@ var createBoard = function () {
 
 createBoard();
 
-//document.getElementsByTagName('button')[0].addEventListener('click', window.location.reload());
+var resetPage = function() {
+	window.location.reload();
+}
+
+var resetButton = document.getElementById('reset-button');
+resetButton.addEventListener('click', resetPage);
+
+
 
 
 
